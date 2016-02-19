@@ -1,6 +1,5 @@
 using System;
-
-namespace programm
+namespace Programm
 {
 	class MainClass
 	{
@@ -8,9 +7,10 @@ namespace programm
 		{
 			int number = Convert.ToInt32(Console.ReadLine());
 			Console.WriteLine();
-			Console.WriteLine (number);
-			Console.WriteLine(Factorial (number));
+			Console.WriteLine(number);
+			Console.WriteLine(Factorial(number));
 		}
+
 		private static int Factorial(int n)
 		{
 			if (n > 0) 
@@ -22,5 +22,7 @@ namespace programm
 				return 1;
 			}
 		}
+		// function for calculating the factorial
 	}
+	// class for calculating the factorial
 }
