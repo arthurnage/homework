@@ -1,10 +1,9 @@
 using System;
-
 namespace _5
 {
 	class MainClass
 	{
-		public static void Main (string[] args)
+		public static void Main(string[] args)
 		{
 			const int matrixSize = 5;
 			int[,] matrix = new int[matrixSize, matrixSize]   
@@ -33,13 +32,14 @@ namespace _5
 				for (int j = 0; j < matrixSize; ++j)
 				{
 					Console.Write(matrix[i, j]);
-					Console.Write (" ");
+					Console.Write(" ");
 					if (j == 4)
 					{
-						Console.WriteLine ();
+						Console.WriteLine();
 					}
 				}
 			}
 		}
 	}
+	//class for sorting stolbtzy matritzy by using bubblesort
 }
