@@ -1,18 +1,21 @@
 using System;
-namespace Fibonacci
+
+namespace fibonacci
 {
+	// class for calculating a fibonacci numbers
 	class MainClass
 	{
+		// main method
 		public static void Main(string[] args)
 		{
 			Console.WriteLine("enter a number");
-			int i = Convert.ToInt32(Console.ReadLine());
-			Console.WriteLine(Fibonacci(i));
+			int i = Convert.ToInt32(Console.ReadLine ());
+			Console.WriteLine (Fibonacci(i));
 		}
 
+		// a function for calculating fibonacci numbers
 		public static long Fibonacci(int n)
 		{
-
 			long previousNumber = 1;
 			long sum = 2;
 			for (int i = 3; i < n; ++i)
@@ -30,7 +33,5 @@ namespace Fibonacci
 				return sum;
 			}
 		}
-		// function for calculating the fibonacci number
 	}
-	//class MainClass for calculating the fibonacci number
 }
