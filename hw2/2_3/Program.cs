@@ -1,5 +1,5 @@
 using System;
-using HashFunction;
+using MyWorks;
 
 namespace _3
 {
@@ -9,8 +9,9 @@ namespace _3
 		// main method
 		public static void Main(string[] args)
 		{
-			HashFunc hashTable = new HashFunc();
+			HashTable hashTable = new HashTable();
 			Console.WriteLine("enter a number of strings you want to hash");
+			// add 'arthur' string
 			int n = Convert.ToInt32(Console.ReadLine());
 			for (int i = 0; i < n; ++i)
 			{

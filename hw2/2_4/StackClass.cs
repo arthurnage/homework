@@ -1,7 +1,6 @@
 using System;
-using StackInterface;
 
-namespace StackNamespace
+namespace MyWorks
 {
 	public class Stack : IStack
 	{
@@ -10,36 +9,19 @@ namespace StackNamespace
 		// class appearing as a stack element
 		private class StackElement
 		{
-			private int data;
-			private StackElement next;
+			public int Value { set; get; }
+			public StackElement Next { set; get; }
 
 			// constructor
 			public StackElement(int value, StackElement nextElement)
 			{
-				data = value;
-				next = nextElement;
-			}
-
-			//access to data of a stack element
-			public int Value
-			{
-				get { return data; }
-				set { data = value; }
-			}
-
-			//access to next stack element
-			public StackElement Next
-			{
-				get { return next; }
-				set { next = value; }
+				Value = value;
+				Next = nextElement;
 			}
 		}
 
 		// constructor
-		public Stack()
-		{
-			top = null;
-		}
+		public Stack() { }
 
 		// returns value in the top of the stack
 		public int Value()
@@ -65,14 +47,7 @@ namespace StackNamespace
 		// checks is the stack empty
 		public bool IsEmpty()
 		{
-			if (top == null)
-			{
-				return true;
-			}
-			else
-			{
-				return false;
-			}
+			return top == null;
 		}
 	}
 }

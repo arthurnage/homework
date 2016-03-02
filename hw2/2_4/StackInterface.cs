@@ -1,6 +1,6 @@
 using System;
 
-namespace StackInterface
+namespace MyWorks
 {
 	// interface for working with a stack
 	public interface IStack
@@ -13,8 +13,5 @@ namespace StackInterface
 
 		// checks is the stack empty
 		bool IsEmpty();
-
-		int Value();
 	}
 }
-

@@ -1,18 +1,17 @@
 using System;
-using ArrayStackClass;
 
-namespace StackCalculator
+namespace MyWorks
 {
 	// class appears as a stack calculator
 	public class Calculator
 	{
 		// stack of numbers
-		private ArrayStack stack;
+		private List stack;
 
 		// constructor
 		public Calculator()
 		{
-			stack = new ArrayStack();
+			stack = new List();
 		}
 
 		// adding a number to the stack

@@ -1,7 +1,6 @@
 using System;
-using StackInterface;
 
-namespace ArrayStackClass
+namespace MyWorks
 {
 	// class for using an array stack
 	public class ArrayStack : IStack
@@ -17,14 +16,23 @@ namespace ArrayStackClass
 		// adds an element to the top of the stack
 		public void Push(int value)
 		{
-			array[++index] = value;
+			if (index == 49)
+			{
+				Console.WriteLine("stack overflow");
+				return;
+			}
+			array[index++] = value;
 		}
 
 		// deletes an element in the top of the stack
 		public int Pop()
 		{
-			int value = array[index];
-			index--;
+			if (index == 0)
+			{
+				Console.WriteLine("a stack is empty");
+				return 0;
+			}
+			int value = array[index--];
 			return value;
 		}
 

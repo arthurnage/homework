@@ -1,7 +1,6 @@
 using System;
-using StackCalculator;
 
-namespace ProgramForCalculator
+namespace MyWorks
 {
 	//class for using callculator
 	class MainClass
@@ -16,7 +15,7 @@ namespace ProgramForCalculator
 			calculator.Push(2);
 			calculator.Add(); // 2 + 15
 			calculator.Push(6);
-			calculator.RemainderDivide();// 17 % 6
+			calculator.RemainderDivide();// 17 % 6 = 5
 			Console.WriteLine(calculator.Result());
 		}
 	}

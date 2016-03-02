@@ -1,49 +1,34 @@
 using System;
 
-namespace ListNamespace
+namespace MyWorks
 {
 	// class for keeping data in a list and working with it
 	public class List
 	{
-		ListElement top;
+		private ListElement top;
 
 		// class appearing as a list element
 		private class ListElement
 		{
-			private int data;
-			private ListElement next;
+			//auto properties
+			public int Value { get; set; }
+			public ListElement Next { get; set; }
 
 			//constructor
-			public ListElement(int value)
+			public ListElement(int value, ListElement nextElement)
 			{
-				data = value;
-			}
-
-			//access to data of list element
-			public int Value
-			{
-				get { return data; }
-				set { data = value; }
-			}
-
-			//access to next list element
-			public ListElement Next
-			{
-				get { return next; }
-				set { next = value; }
+				Value = value;
+				Next = nextElement;
 			}
 		}
 
 		// constructor
-		public List()
-		{
-			top = null;
-		}
+		public List() { }
 
 		// adds a new element to the list
 		public void Push(int value)
 		{
-			ListElement newElement = new ListElement(value);
+			ListElement newElement = new ListElement(value, top);
 			newElement.Next = top;
 			top = newElement;
 		}
@@ -65,14 +50,7 @@ namespace ListNamespace
 		// checks is the list empty
 		public bool IsEmpty()
 		{
-			if (top == null)
-			{
-				return true;
-			}
-			else
-			{
-				return false;
-			}
+			return top == null;
 		}
 	}
 }
