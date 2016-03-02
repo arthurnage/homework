@@ -1,6 +1,6 @@
 using System;
 
-namespace fibonacci
+namespace MyWorks
 {
 	// class for calculating a fibonacci numbers
 	class MainClass
@@ -9,8 +9,8 @@ namespace fibonacci
 		public static void Main(string[] args)
 		{
 			Console.WriteLine("enter a number");
-			int i = Convert.ToInt32(Console.ReadLine ());
-			Console.WriteLine (Fibonacci(i));
+			int i = Convert.ToInt32(Console.ReadLine());
+			Console.WriteLine(Fibonacci(i));
 		}
 
 		// a function for calculating fibonacci numbers

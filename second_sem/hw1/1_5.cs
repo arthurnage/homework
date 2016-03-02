@@ -1,6 +1,6 @@
 using System;
 
-namespace _5
+namespace MyWorks
 {
 	// class for sorting a matrix by using bubble sort
 	class MainClass
@@ -10,7 +10,7 @@ namespace _5
 		{
 			const int matrixSize = 5;
 			int[,] matrix = new int[matrixSize, matrixSize]   
-		    {{1, 21, 9, 10, 11}, 
+			{{1, 21, 9, 10, 11}, 
 			{6, 5, 6, 7, 2},
 			{5, 4, 1, 8, 3}, 
 			{4, 3, 2, 9, 4}, 
@@ -31,7 +31,7 @@ namespace _5
 			}
 		}
 
-		// function for bubblesorting, n means array length
+		// function for bubblesorting
 		public static int[,] BubbleSort(int[,] matrix, int matrixSize)
 		{
 			for (int i = 0; i < matrixSize; ++i)

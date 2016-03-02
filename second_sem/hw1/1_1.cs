@@ -1,6 +1,6 @@
 using System;
 
-namespace programm
+namespace MyWorks
 {
 	// main class for calculating a factorial of number
 	class MainClass
@@ -17,11 +17,11 @@ namespace programm
 		// function for calculating a factorial of number
 		private static int Factorial(int n)
 		{
-			if (n > 0) 
+			if (n > 0)
 			{
 				return n * Factorial(n - 1);
-			} 
-			else 
+			}
+			else
 			{
 				return 1;
 			}
