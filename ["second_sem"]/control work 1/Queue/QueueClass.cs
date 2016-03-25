@@ -2,12 +2,12 @@
 
 namespace MyWorks
 {
-	// class Query with priorities, each element here has an own priority
+	// class Queue with priorities, each element here has an own priority
 	public class Queue
 	{
 		private QueueElement top;
 
-		// private class appearing as a Query element
+		// private class appearing as a Queue element
 		private class QueueElement
 		{
 			// prorerties
@@ -27,14 +27,14 @@ namespace MyWorks
 		// constructor
 		public Queue() { }
 
-		// add an enement with it's priority to query
+		// add an enement with it's priority to queue
 		public void Enqueue(int value, int priority)
 		{
 			QueueElement newElement = new QueueElement(value, priority, top);
 			top = newElement;
 		}
 
-		// remove an element with the biggest priority from the query
+		// remove an element with the biggest priority from the queue
 		public int Dequeue()
 		{
 			QueueElement current = top;
@@ -63,10 +63,10 @@ namespace MyWorks
 					return maxPriority; // the same thing
 				}
 			}
-			throw new Exception("query is empty");
+			throw new DeletingFromTheEmptyQueueException("queue is empty");
 		}
 
-		// print the Query
+		// print the Queue
 		public void Print()
 		{
 			QueueElement current = top;
@@ -78,7 +78,7 @@ namespace MyWorks
 			Console.WriteLine();
 		}
 
-		// checks does an element belong to query
+		// checks does an element belong to queue
 		public bool IsBelong(int value, int priority)
 		{
 			QueueElement current = top;
