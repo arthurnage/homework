@@ -9,34 +9,25 @@ namespace MyWorks
 		public static List Map(List list, Func<int, int> Function)
 		{
 			List newList = new List();
-			while (!list.IsEmpty())
+			for (int i = 0; i < list.GetLength(); ++i)
 			{
-				newList.Push(Function(list.Pop()));
+				newList.Push(Function(list.GetIndexedValue(list.GetLength() - 1 - i)));
 			}
-			while (!newList.IsEmpty())
-			{
-				list.Push(newList.Pop());
-			}
-			return list;
+			return newList;
 		}
 
-		// deletes elements froms list in dependance of bool function
+		// deletes elements from the list in dependance of bool function
 		public static List Filter(List list, Func<int, bool> Function)
 		{
 			List newList = new List();
-			while (!list.IsEmpty())
+			for (int i = 0; i < list.GetLength(); ++i)
 			{
-				int value = list.Pop();
-				if (Function(value))
+				if (Function(list.GetIndexedValue(list.GetLength() - 1 - i)))
 				{
-					newList.Push(value);
+					newList.Push(list.GetIndexedValue(list.GetLength() - 1 - i));
 				}
 			}
-			while (!newList.IsEmpty())
-			{
-				list.Push(newList.Pop());
-			}
-			return list;
+			return newList;
 		}
 
 		// returns a multiplicated value from the list elements
