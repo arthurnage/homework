@@ -7,35 +7,35 @@ namespace MyWorks
 	public class TreeTest
 	{
 		[Test()]
-		public void Test1()
+		public void MultiplicateTest()
 		{
 			Tree tree = new Tree("( * 3 6 ");
 			Assert.AreEqual(18, tree.Calculate());
 		}
 
 		[Test()]
-		public void Test2()
+		public void ComplicatedTest1()
 		{
 			Tree tree = new Tree("( + ( - 4 ( / 5 3 ) ) 3 )");
 			Assert.AreEqual(6, tree.Calculate());
 		}
 
 		[Test()]
-		public void Test3()
+		public void SubstractTest1()
 		{
 			Tree tree = new Tree("( - 5 3 )");
 			Assert.AreEqual(2, tree.Calculate());
 		}
 
 		[Test()]
-		public void Test4()
+		public void DivideTest()
 		{
 			Tree tree = new Tree("( / 5 3 )");
 			Assert.AreEqual(1, tree.Calculate());
 		}
 
 		[Test()]
-		public void Test5()
+		public void SubstractTest2()
 		{
 			Tree tree = new Tree("( - 2 3 )");
 			Assert.AreEqual(-1, tree.Calculate());
