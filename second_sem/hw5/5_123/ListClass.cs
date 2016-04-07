@@ -102,5 +102,36 @@ namespace MyWorks
 				current = current.Next;
 			}
 		}
+
+		// returns length of the list
+		public int GetLength()
+		{
+			int count = 0;
+			ListElement current = top;
+			while (current != null)
+			{
+				count++;
+				current = current.Next;
+			}
+			return count;
+		}
+
+		// gets access to each element through it's index
+		public int GetIndexedValue(int index)
+		{
+			ListElement current = top;
+			if (index >= this.GetLength())
+			{
+				throw new Exception("out of list");
+			}
+			else
+			{
+				for (int i = 0; i < index; ++i)
+				{
+					current = current.Next;
+				}
+			}
+			return current.Value;
+		}
 	}
 }
