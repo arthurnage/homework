@@ -2,22 +2,23 @@ using System;
 
 namespace MyWorks
 {
+	// class Tree for keeping calculating data (digits and operations) in polish notation style
 	public class Tree
 	{
 		private string expression;
 		private ITreeNode root;
+
 		// constructor
 		public Tree(string inputLine) 
 		{
 			expression = inputLine;
 			int index = 0;
 			var node = new Operator();
-			Initialize(ref index, ref node);
-			root = node;
+			root = Initialize(ref index, ref node);
 		}
 
 		// function for calculating an expression
-		private void Initialize(ref int index, ref Operator node)
+		private Operator Initialize(ref int index, ref Operator node)
 		{
 			index += 2; // read '( '
 			var treeNode = new Operator();
@@ -45,16 +46,14 @@ namespace MyWorks
 				break;
 			default:
 				{
-					//
+					throw new Exception("wrong string format");
 				}
-				break;
 			}
 			index += 2; // read a sign
 			if (expression[index] == '(')
 			{
 				var treeNodeLeft = new Operator();
 				Initialize(ref index, ref treeNodeLeft);
-				treeNode.Left = new Operator();
 				treeNode.Left = treeNodeLeft;
 			}
 			else
@@ -67,7 +66,6 @@ namespace MyWorks
 			{
 				var treeNodeRight = new Operator();
 				Initialize(ref index, ref treeNodeRight);
-				treeNode.Right = new Operator();
 				treeNode.Right = treeNodeRight;
 			}
 			else
@@ -78,6 +76,7 @@ namespace MyWorks
 			}
 			index += 2; // read spacebar
 			node = treeNode;
+			return node;
 		}
 
 		// print all the tree
