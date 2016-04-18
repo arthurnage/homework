@@ -1,6 +1,6 @@
 using System;
 
-namespace ListNamespace
+namespace MyWorks
 {
 	// class for keeping data in a list and working with it
 	public class List
@@ -10,8 +10,8 @@ namespace ListNamespace
 		// class appearing as a list element
 		private class ListElement
 		{
-			private string data;
-			private ListElement next;
+			public string Data { get; set }
+			private ListElement Next { get; set; }
 
 			//constructor
 			public ListElement(string value, ListElement nextElement)
@@ -19,27 +19,10 @@ namespace ListNamespace
 				data = value;
 				next = nextElement;
 			}
-
-			//access to data of list element
-			public string Value
-			{
-				get { return data; }
-				set { data = value; }
-			}
-
-			//access to next list element
-			public ListElement Next
-			{
-				get { return next; }
-				set { next = value; }
-			}
 		}
 
 		// constructor
-		public List()
-		{
-			top = null;
-		}
+		public List() { }
 
 		// adds a new element to the list
 		public void Push(string value)
@@ -66,14 +49,7 @@ namespace ListNamespace
 		// checks is the list empty
 		public bool IsEmpty()
 		{
-			if (top == null)
-			{
-				return true;
-			}
-			else
-			{
-				return false;
-			}
+			return (top == null);
 		}
 
 		// print list
@@ -82,7 +58,7 @@ namespace ListNamespace
 			ListElement current = top;
 			while (current != null)
 			{
-				Console.Write ("{0} ", current.Value);
+				Console.Write("{0} ", current.Value);
 				current = current.Next;
 			}
 		}
@@ -99,14 +75,7 @@ namespace ListNamespace
 				}
 				current = current.Next;
 			}
-			if (current == null)
-			{
-				return false;
-			}
-			else
-			{
-				return true;
-			}
+			return (current == null);
 		}
 
 		public void Remove(string line)
