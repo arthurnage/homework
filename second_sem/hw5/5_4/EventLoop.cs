@@ -4,51 +4,55 @@ namespace MyWorks
 {
 	public class EventLoop
 	{
-		private int positionY = Console.CursorLeft; // vertical cursor position
-		private int positionX = Console.CursorTop; // horisontal cursor position
+		/// <summary>
+		/// Handler for up arrow
+		/// </summary>
+		public event EventHandler<EventArgs> UpHandler = (sender, args) => { };
 
-		// eventLoop body
+		/// <summary>
+		/// Handler for right arrow
+		/// </summary>
+		public event EventHandler<EventArgs> RightHandler = (sender, args) => { };
+
+		/// <summary>
+		/// Handler for down arrow
+		/// </summary>
+		public event EventHandler<EventArgs> DownHandler = (sender, args) => { };
+
+		/// <summary>
+		/// Handler for left arrow
+		/// </summary>
+		public event EventHandler<EventArgs> LeftHandler = (sender, args) => { };
+		
+		/// <summary>
+		///  eventLoop body
+		/// </summary>
 		public void Run()
 		{
 			while (true)
 			{
 				var key = Console.ReadKey();
+
 				switch (key.Key)
 				{
 				case ConsoleKey.LeftArrow:
 					{
-						if (positionX > 0)
-						{
-							positionX -= 1;
-							Console.SetCursorPosition(positionX, positionY);
-						}
+						LeftHandler(this, EventArgs.Empty);
 					}
 					break;
 				case ConsoleKey.RightArrow:
 					{
-						if (positionX < Console.LargestWindowWidth - 1)
-						{
-							positionX += 1;
-							Console.SetCursorPosition(positionX, positionY);
-						}
+						RightHandler(this, EventArgs.Empty);
 					}
 					break;
 				case ConsoleKey.DownArrow:
 					{
-						if (positionY < Console.LargestWindowHeight - 1)
-						{
-							positionY += 1;
-							Console.SetCursorPosition(positionX, positionY);
-						}
+						DownHandler(this, EventArgs.Empty);
 					}
 					break;
 				case ConsoleKey.UpArrow:
 					{
-						if (positionY > 0)
-						{
-							positionY -= 1;
-							Console.SetCursorPosition(positionX, positionY);
-						}
+						UpHandler(this, EventArgs.Empty);
 					}
 					break;
 				}
