@@ -1,0 +1,7 @@
+/Users/arthur/Projects/c#/test2/CalculatorTests/obj/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/Users/arthur/Projects/c#/test2/CalculatorTests/bin/Debug/CalculatorTests.dll.mdb
+/Users/arthur/Projects/c#/test2/CalculatorTests/bin/Debug/CalculatorTests.dll
+/Users/arthur/Projects/c#/test2/CalculatorTests/obj/Debug/CalculatorTests.dll
+/Users/arthur/Projects/c#/test2/CalculatorTests/obj/Debug/CalculatorTests.dll.mdb
+/Users/arthur/Projects/c#/test2/CalculatorTests/bin/Debug/nunit.framework.dll
+/Users/arthur/Projects/c#/test2/CalculatorTests/bin/Debug/test2.exe
