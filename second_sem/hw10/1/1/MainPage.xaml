@@ -1,0 +1,23 @@
+﻿<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk" x:Class="_1.MainPage"
+    mc:Ignorable="d"
+    d:DesignHeight="400" d:DesignWidth="450">
+
+    <Grid x:Name="LayoutRoot" Background="White" Width="450" Height="400">
+        <Button x:Name="button1" Content ="" Height="100" Width="150" FontSize="24" VerticalAlignment="Top" HorizontalAlignment="Left"  Click="OnButtonClicked"/>
+        <Button x:Name="button2" Content ="" Height="100" Width="150" FontSize="24" VerticalAlignment="Top" HorizontalAlignment="Center"  Click="OnButtonClicked"/>
+        <Button x:Name="button3" Content ="" Height="100" Width="150" FontSize="24" VerticalAlignment="Top" HorizontalAlignment="Right"  Click="OnButtonClicked"/>
+        <Button x:Name="button4" Content ="" Height="100" Width="150" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,100,0,200"  Click="OnButtonClicked"/>
+        <Button x:Name="button5" Content ="" Height="100" Width="150" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="150,100,150,200"  Click="OnButtonClicked"/>
+        <Button x:Name="button6" Content ="" Height="100" Width="150" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,100,0,200"  Click="OnButtonClicked"/>
+        <Button x:Name="button7" Content ="" Height="100" Width="150" FontSize="24" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="0,0,0,100"  Click="OnButtonClicked"/>
+        <Button x:Name="button8" Content ="" Height="100" Width="150" FontSize="24" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="150,0,150,100"  Click="OnButtonClicked"/>
+        <Button x:Name="button9" Content ="" Height="100" Width="150" FontSize="24" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,0,100"  Click="OnButtonClicked"/>
+        <Button x:Name="button" Content="New game" HorizontalAlignment="Left" VerticalAlignment="Top" Width="231" Margin="219,300,0,0" Height="100" FontSize="24"  Click="NewGame"/>
+        <Button x:Name="resultButton" Content ="" Height="100" Width="219" FontSize="24" VerticalAlignment="Bottom" HorizontalAlignment="Left" IsEnabled="False"/>
+    </Grid>
+</UserControl>

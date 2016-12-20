@@ -1,0 +1,7 @@
+/Users/arthur/Projects/c#/4_2/4_2Tests/obj/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/Users/arthur/Projects/c#/4_2/4_2Tests/bin/Debug/nunit.framework.dll
+/Users/arthur/Projects/c#/4_2/4_2Tests/bin/Debug/4_2.exe
+/Users/arthur/Projects/c#/4_2/4_2Tests/bin/Debug/4_2Tests.dll.mdb
+/Users/arthur/Projects/c#/4_2/4_2Tests/bin/Debug/4_2Tests.dll
+/Users/arthur/Projects/c#/4_2/4_2Tests/obj/Debug/4_2Tests.dll
+/Users/arthur/Projects/c#/4_2/4_2Tests/obj/Debug/4_2Tests.dll.mdb
