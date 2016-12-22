@@ -9,9 +9,25 @@ namespace MyWorks
     /// </summary>
     public class RobotMaker
     {
+        /// <summary>
+        /// Gets a robots number.
+        /// </summary>
+        /// <value>The robots number.</value>
         public int RobotsNumber { get; }
+        /// <summary>
+        /// Gets a list of robots in the matrix
+        /// </summary>
+        /// <value>The robots.</value>
         public Robot[] Robots { get; }
+        /// <summary>
+        /// A graph where robots move
+        /// </summary>
+        /// <value>The matrix.</value>
         public int[,] Matrix { get; }
+        /// <summary>
+        /// gets true if robots can kill each other in a graph
+        /// </summary>
+        /// <value><c>true</c> if sequence exists; otherwise, <c>false</c>.</value>
         public bool SequenceExists { get; set; }
 
         /// <summary>
@@ -61,7 +77,7 @@ namespace MyWorks
             // subgraph of way creates for each robot
             foreach (Robot robot in Robots)
             {
-                robot.setGraph();
+                robot.SetGraph();
             }
             // compare number of robots and their subgraphs of ways
             var usedRobots = new List<int>();
@@ -83,7 +99,7 @@ namespace MyWorks
                     {
                         if (!usedRobots.Contains(j))
                         {
-                            if (new HashSet<int>(Robots[i].graph).SetEquals(Robots[j].graph))
+                            if (new HashSet<int>(Robots[i].Graph).SetEquals(Robots[j].Graph))
                             {
                                 index++;
                                 usedRobots.Add(j);

@@ -8,7 +8,7 @@ namespace MyWorks
         private RobotMaker robots;
 
         [Test()]
-        public void Test1()
+        public void ThreeNodeGraphTest()
         {
             robots = new RobotMaker("/Users/arthur/Projects/c#/hw3/hw3Test/testMatrix1.txt");
             robots.CheckMatrix();
@@ -16,7 +16,7 @@ namespace MyWorks
         }
 
         [Test()]
-        public void Test2()
+        public void FourNodeGraphTest()
         {
             robots = new RobotMaker("/Users/arthur/Projects/c#/hw3/hw3Test/testMatrix2.txt");
             robots.CheckMatrix();
@@ -24,7 +24,7 @@ namespace MyWorks
         }
 
         [Test()]
-        public void Test3()
+        public void FourNodeGraphTestWithTreeRobots()
         {
             robots = new RobotMaker("/Users/arthur/Projects/c#/hw3/hw3Test/testMatrix3.txt");
             robots.CheckMatrix();
@@ -32,7 +32,7 @@ namespace MyWorks
         }
 
         [Test()]
-        public void Test4()
+        public void FourNodeGraphTestWithOneRobot()
         {
             robots = new RobotMaker("/Users/arthur/Projects/c#/hw3/hw3Test/testMatrix4.txt");
             robots.CheckMatrix();
@@ -40,7 +40,7 @@ namespace MyWorks
         }
 
         [Test()]
-        public void Test5()
+        public void ThreeNodeCycleGraphTest()
         {
             robots = new RobotMaker("/Users/arthur/Projects/c#/hw3/hw3Test/testMatrix5.txt");
             robots.CheckMatrix();
