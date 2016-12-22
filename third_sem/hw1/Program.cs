@@ -4,11 +4,18 @@ using System.Collections;
 
 namespace MyWorks
 {
-	class MainClass
-	{
-		public static void Main(string[] args)
-		{
-			var tree = new Tree<int>();
+    /// <summary>
+    /// Main class
+    /// </summary>
+    class MainClass
+    {
+        /// <summary>
+        /// The entry point of the program that uses tree for keeping data, where the program control starts and ends.
+        /// </summary>
+        /// <param name="args">The command-line arguments.</param>
+        public static void Main(string[] args)
+        {
+            var tree = new Tree<int>();
             tree.Add(10);
             tree.Add(4);
             tree.Add(5);
@@ -19,6 +26,6 @@ namespace MyWorks
                 sum += value;
             }
             Console.WriteLine(sum);
-		}
-	}
+        }
+    }
 }

@@ -11,15 +11,15 @@ namespace MyWorks
         public void Initialise()
         {
             tree = new Tree<int>();
-            tree.Add(10);
-            tree.Add(4);
-            tree.Add(5);
-            tree.Add(11);
         }
 
         [Test()]
         public void AddTest()
         {
+            tree.Add(10);
+            tree.Add(4);
+            tree.Add(5);
+            tree.Add(11);
             Assert.IsTrue(tree.IsBelong(10));
             Assert.IsTrue(tree.IsBelong(11));
             Assert.IsTrue(tree.IsBelong(4));
@@ -30,6 +30,7 @@ namespace MyWorks
         [Test()]
         public void RemoveTest()
         {
+            tree.Add(10);
             tree.Add(16);
             tree.Add(20);
             tree.Add(13);
@@ -45,6 +46,10 @@ namespace MyWorks
         [Test()]
         public void EnumTest()
         {
+            tree.Add(10);
+            tree.Add(4);
+            tree.Add(5);
+            tree.Add(11);
             int sum = 0;
             foreach (int value in tree)
             {

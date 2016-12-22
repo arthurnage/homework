@@ -5,100 +5,90 @@ using System.Collections;
 namespace MyWorks
 {
     public class Tree<T> : IEnumerable<T> where T : IComparable
-	{
-		/// <summary>
-		/// Tree node class
-		/// </summary>
-		private class TreeNode
-		{
-			public T Value { get; set; }
-			public TreeNode Left { get; set; }
-			public TreeNode Right { get; set; }
+    {
+        /// <summary>
+        /// Tree node class
+        /// </summary>
+        private class TreeNode
+        {
+            public T Value { get; set; }
+            public TreeNode Left { get; set; }
+            public TreeNode Right { get; set; }
             public TreeNode Parent { get; set; }
 
-			/// <summary>
-			/// Initializes a new instance of the treenode class.
-			/// </summary>
-			/// <param name="value">Value.</param>
+            /// <summary>
+            /// Initializes a new instance of the treenode class.
+            /// </summary>
+            /// <param name="value">Value.</param>
             public TreeNode(T value, TreeNode parent)
-			{
-				Value = value;
+            {
+                Value = value;
                 Parent = parent;
-			}
-		}
+            }
+        }
 
         /// <summary>
         /// The root of the tree
         /// </summary>
-		private TreeNode root;
+        private TreeNode root;
 
         /// <summary>
         /// Anount of tree nodes
         /// </summary>
         private int length;
 
-		/// <summary>
-		/// Adds an element to the tree by using addfunction
-		/// </summary>
-		/// <param name="value">Value.</param>
-		public void Add(T value)
-		{
-			if (root == null)
-			{
-				root = new TreeNode(value, null);
-				length++;
-			}
-			else
-			{
-				AddFunction(root, value);
-			}
-		}
+        /// <summary>
+        /// Adds an element to the tree
+        /// </summary>
+        /// <param name="value">Value.</param>
+        public void Add(T value)
+        {
+            if (root == null)
+            {
+                root = new TreeNode(value, null);
+                length++;
+            }
+            else
+            {
+                Add(root, value);
+            }
+        }
 
         /// <summary>
-        /// Recursive subsidiary function for adding elements to the tree
+        /// Recursively adds passed value to the passed tree
         /// </summary>
         /// <param name="root">Root.</param>
         /// <param name="value">Value.</param>
-        private void AddFunction(TreeNode root, T value)
-		{
-			if (root.Left == null && root.Value.CompareTo(value) == 1)
-			{
+        private void Add(TreeNode root, T value)
+        {
+            if (root.Left == null && root.Value.CompareTo(value) == 1)
+            {
                 root.Left = new TreeNode(value, root);
-				length++;
-				return;
-			}
-			if (root.Right == null && root.Value.CompareTo(value) == -1)
-			{
+                length++;
+                return;
+            }
+            if (root.Right == null && root.Value.CompareTo(value) == -1)
+            {
                 root.Right = new TreeNode(value, root);
-				length++;
-				return;
-			}
-			if (root.Value.CompareTo(value) == 1)
-			{
-				AddFunction(root.Left, value);
-			}
-			else if (root.Value.CompareTo(value) == -1)
-			{
-				AddFunction(root.Right, value);
-			}
-		}
+                length++;
+                return;
+            }
+            if (root.Value.CompareTo(value) == 1)
+            {
+                Add(root.Left, value);
+            }
+            else if (root.Value.CompareTo(value) == -1)
+            {
+                Add(root.Right, value);
+            }
+        }
 
-		/// <summary>
-		/// Determines whether this value is belong to the tree by using IsBelongFunction
-		/// </summary>
-		/// <returns><c>true</c> if this instance is belong the specified value; otherwise, <c>false</c>.</returns>
-		/// <param name="value">Value.</param>
-		public bool IsBelong(T value)
-		{
-			if (root != null)
-			{
-                if (IsBelongFunction(root, value) != null)
-				{
-					return true;
-				}
-			}
-			return false;
-		}
+        /// <summary>
+        /// Determines whether this value is belong to the tree by using IsBelongFunction
+        /// </summary>
+        /// <returns><c>true</c> if this instance is belong the specified value; otherwise, <c>false</c>.</returns>
+        /// <param name="value">Value.</param>
+        public bool IsBelong(T value) => root != null && IsBelong(root, value) != null;
 
         /// <summary>
         /// Recursive subsidiary function for checking is element belongs to the tree
@@ -106,21 +96,21 @@ namespace MyWorks
         /// <returns><c>true</c>, if belong function was ised, <c>false</c> otherwise.</returns>
         /// <param name="root">Root.</param>
         /// <param name="value">Value.</param>
-        private TreeNode IsBelongFunction(TreeNode root, T value)
-		{
-			if (root.Value.Equals(value))
-			{
-				return root;
-			}
+        private TreeNode IsBelong(TreeNode root, T value)
+        {
+            if (root.Value.Equals(value))
+            {
+                return root;
+            }
             if (root.Left == null && root.Value.CompareTo(value) == 1)
             {
                 return null;
             }
             if (root.Right == null && root.Value.CompareTo(value) == -1)
-			{
+            {
                 return null;
-			}
-            return (root.Value.CompareTo(value) == -1) ? IsBelongFunction(root.Right, value) : IsBelongFunction(root.Left, value);
+            }
+            return (root.Value.CompareTo(value) == -1) ? IsBelong(root.Right, value) : IsBelong(root.Left, value);
 		}
 
         /// <summary>
@@ -129,7 +119,7 @@ namespace MyWorks
         /// <param name="value">Value.</param>
 		public void Remove(T value)
         {
-            var current = IsBelongFunction(root, value);
+            var current = IsBelong(root, value);
             if (current != null)
             {
                 if (current.Left == null)
@@ -177,14 +167,13 @@ namespace MyWorks
 
         IEnumerator<T> IEnumerable<T>.GetEnumerator() => (IEnumerator<T>)GetEnumerator();
 
-        public TreeEnumerator GetEnumerator() => new TreeEnumerator(this);
+        public IEnumerator<T> GetEnumerator() => new TreeEnumerator(this);
 
-        public class TreeEnumerator : IEnumerator<T>
+        private class TreeEnumerator : IEnumerator<T>
         {
             private Tree<T> tree;
             private int position = -1;
             private TreeNode current;
-
 
             public TreeEnumerator(Tree<T> newTree)
             {
