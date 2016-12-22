@@ -4,11 +4,18 @@ using System.IO;
 
 namespace MyWorks
 {
+    /// <summary>
+    /// Network class representing computer net with viruses
+    /// </summary>
     public class Network
     {
         private int[,] net;
         private ArrayList viruses;
 
+        /// <summary>
+        /// array of computers in the network
+        /// </summary>
+        /// <value>The computers.</value>
         public Computer[] Computers { get; set; }
 
         /// <summary>

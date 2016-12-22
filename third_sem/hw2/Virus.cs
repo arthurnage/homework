@@ -8,6 +8,7 @@ namespace MyWorks
     {
         private Computer[] computers;
         private int[,] net;
+        private readonly Random random = new Random();
 
         /// <summary>
         /// Initializes a new instance of the virus class
@@ -53,8 +54,7 @@ namespace MyWorks
         /// <param name="computer">Computer.</param>
         private void TryToInfect(Computer computer)
         {
-            Random rnd = new Random();
-            if (rnd.Next(0, 100) <= computer.Probability)
+            if (random.Next(0, 100) <= computer.OS.Probability)
             {
                 computer.Infected = true;
             }
