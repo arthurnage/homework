@@ -114,32 +114,109 @@ namespace MyWorks
 		}
 
         /// <summary>
-        /// Removes an element from the tree
+        /// Removes value from the tree
         /// </summary>
         /// <param name="value">Value.</param>
-		public void Remove(T value)
+        public void Remove(T value) => RemoveFromTree(ref root, value);
+
+        /// <summary>
+        /// function for removing value from the tree
+        /// </summary>
+        /// <param name="node">Node.</param>
+        /// <param name="value">Value.</param>
+        private void RemoveFromTree(ref TreeNode node, T value)
         {
-            var current = IsBelong(root, value);
-            if (current != null)
+            if (node == null)
             {
-                if (current.Left == null)
-                {
-                    current = current.Right;
-                    length--;
-                    return;
-                }
-                if (current.Right == null)
-                {
-                    current = current.Left;
-                    length--;
-                    return;
-                }
-                var changeNode = GetMostLeftNode(current.Right);
-                changeNode.Parent.Left = changeNode.Right;
-                current.Value = changeNode.Value;
-                length--;
+                return;
             }
-		}
+            if (node.Value.CompareTo(value) == 0)
+            {
+                if (node.Left == null && node.Right == null)
+                {
+                    if (node.Parent == null)
+                    {
+                        node = null;
+                    }
+                    else
+                    {
+                        if (node.Parent.Value.CompareTo(node.Value) > 0)
+                        {
+                            node.Parent.Left = null;
+                        }
+                        else
+                        {
+                            node.Parent.Right = null;
+                        }
+                    }
+                    return;
+                }
+                if (node.Left != null && node.Right == null)
+                {
+                    if (node.Parent == null)
+                    {
+                        node.Left.Parent = null;
+                        node = node.Left;
+                    }
+                    else
+                    {
+                        if (node.Parent.Value.CompareTo(node.Value) > 0)
+                        {
+                            node.Parent.Left = node.Left;
+                            node.Left.Parent = node.Parent;
+                        }
+                        else
+                        {
+                            node.Parent.Right = node.Left;
+                            node.Left.Parent = node.Parent;
+                        }
+                    }
+                    return;
+                }
+                if (node.Left == null && node.Right != null)
+                {
+                    if (node.Parent == null)
+                    {
+                        node.Right.Parent = null;
+                        node = node.Right;
+                    }
+                    else
+                    {
+                        if (node.Parent.Value.CompareTo(node.Value) > 0)
+                        {
+                            node.Parent.Left = node.Right;
+                            node.Right.Parent = node.Parent;
+                        }
+                        else
+                        {
+                            node.Parent.Right = node.Right;
+                            node.Right.Parent = node.Parent;
+                        }
+                    }
+                    return;
+                }
+                var tempNode = node.Left;
+                while (tempNode.Right != null)
+                {
+                    tempNode = tempNode.Right;
+                }
+                if (tempNode.Parent.Value.CompareTo(tempNode.Value) < 0)
+                {
+                    tempNode.Parent.Right = null;
+                }
+                else
+                {
+                    tempNode.Parent.Left = null;
+                }
+                tempNode.Parent = tempNode;
+                node.Value = tempNode.Value;
+            }
+            else
+            {
+                var newNode = node.Value.CompareTo(value) > 0 ? node.Left : node.Right;
+                RemoveFromTree(ref newNode, value);
+            }
+        }
 
         /// <summary>
         /// Returns the most left son of the tree node
