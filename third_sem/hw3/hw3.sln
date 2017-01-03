@@ -1,0 +1,23 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hw3", "hw3.csproj", "{FB9706D5-CEC2-4CB9-B804-C0D9D1683B9E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hw3Test", "hw3Test\hw3Test.csproj", "{1F2B4812-2B68-4282-A623-FDA1107E13D2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FB9706D5-CEC2-4CB9-B804-C0D9D1683B9E}.Debug|x86.ActiveCfg = Debug|x86
+		{FB9706D5-CEC2-4CB9-B804-C0D9D1683B9E}.Debug|x86.Build.0 = Debug|x86
+		{FB9706D5-CEC2-4CB9-B804-C0D9D1683B9E}.Release|x86.ActiveCfg = Release|x86
+		{FB9706D5-CEC2-4CB9-B804-C0D9D1683B9E}.Release|x86.Build.0 = Release|x86
+		{1F2B4812-2B68-4282-A623-FDA1107E13D2}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1F2B4812-2B68-4282-A623-FDA1107E13D2}.Debug|x86.Build.0 = Debug|Any CPU
+		{1F2B4812-2B68-4282-A623-FDA1107E13D2}.Release|x86.ActiveCfg = Release|Any CPU
+		{1F2B4812-2B68-4282-A623-FDA1107E13D2}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
