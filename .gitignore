@@ -26,3 +26,8 @@
 *.exe
 *.out
 *.app
+**/**/packages
+*.userprefs
+**/**/**/bin
+**/**/**/obj
+*.DS_Store
