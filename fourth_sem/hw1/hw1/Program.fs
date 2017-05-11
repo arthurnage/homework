@@ -4,7 +4,7 @@ module hw1 =
     /// factorial
     let rec fact n =
         match n with
-        | 0 -> 1
+        | _ when n <= 0 -> 1
         | _ -> n * fact (n - 1)
 
     /// fibonacci
@@ -15,7 +15,7 @@ module hw1 =
             | _ -> loop (a + b) a (c - 1)
         loop 1 0 n
 
-    ///reverse list funciton
+    ///reverse list functiton
     let reverse list =
         let rec loop list revList =
             match list with
@@ -38,9 +38,12 @@ module Tests =
 
     [<Test>]
     let ``factorialTest`` () = (fact 5) |> should equal 120
+
     [<Test>]
     let ``fibonacciTest`` () = (fib 5) |> should equal 5
+
     [<Test>]
     let ``reverseListTest`` () = (reverse [1; 2; 3]) |> should equal [3; 2; 1]
+
     [<Test>]
     let ``listMakerTest`` () = (listMaker 2 3) |> should equal [4; 8; 16; 32]
