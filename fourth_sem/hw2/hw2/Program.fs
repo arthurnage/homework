@@ -33,14 +33,13 @@ module Task3 =
 module Task4 =
     /// mergesort for list
     let rec mergesort (l:list<'A>) =
-        let (++) a b = List.rev <| List.fold (fun l t -> t :: l) (List.rev (a)) b
         let rec merge l1 l2 res =
             match l1 with
-            | [] -> res @ l2
+            | [] -> (List.rev res) @ l2
             | _ -> match l2 with
-                   | [] -> res @ l1
-                   | _ when (l1.Head < l2.Head) -> merge (l1.Tail) (l2) (res @ ([l1.Head]))
-                   | _ -> merge (l1) (l2.Tail) (res @ ([l2.Head]))
+                   | [] -> (List.rev res) @ l1
+                   | _ when (l1.Head < l2.Head) -> merge (l1.Tail) (l2) (l1.Head :: res)
+                   | _ -> merge (l1) (l2.Tail) (l2.Head :: res)
         match l with
         | [] -> l
         | [a] -> l
