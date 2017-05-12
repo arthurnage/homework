@@ -14,8 +14,8 @@ module Task2 =
     let numInListChecker list num =
         let rec loop list n pos =
             match list with
-            | [] -> -1
-            | _ -> if (list.Head = n) then pos else loop (list.Tail) n (pos + 1)
+            | [] -> None
+            | _ -> if (list.Head = n) then Some(pos) else loop (list.Tail) n (pos + 1)
         loop list num 0
 
 module Task3 =
@@ -33,13 +33,14 @@ module Task3 =
 module Task4 =
     /// mergesort for list
     let rec mergesort (l:list<'A>) =
+        let (++) a b = List.rev <| List.fold (fun l t -> t :: l) (List.rev (a)) b
         let rec merge l1 l2 res =
             match l1 with
             | [] -> res @ l2
             | _ -> match l2 with
                    | [] -> res @ l1
-                   | _ when (l1.Head < l2.Head) -> merge (l1.Tail) (l2) (res @ (l1.Head :: []))
-                   | _ -> merge (l1) (l2.Tail) (res @ (l2.Head :: []))
+                   | _ when (l1.Head < l2.Head) -> merge (l1.Tail) (l2) (res @ ([l1.Head]))
+                   | _ -> merge (l1) (l2.Tail) (res @ ([l2.Head]))
         match l with
         | [] -> l
         | [a] -> l
@@ -61,11 +62,11 @@ module Tests =
 
     //tests for task 2
     [<Test>]
-    let ``numPositionInListTest1`` () = (numInListChecker [1;2;3] 3) |> should equal 2
+    let ``numPositionInListTest1`` () = (numInListChecker [1; 2; 3] 3) |> should equal 2
     [<Test>]
-    let ``numPositionInListTest2`` () = (numInListChecker [1;2;3] 1) |> should equal 0
+    let ``numPositionInListTest2`` () = (numInListChecker [1; 2; 3] 1) |> should equal 0
     [<Test>]
-    let ``numPositionInListTest3`` () = (numInListChecker [1;2;3] 4) |> should equal -1
+    let ``numPositionInListTest3`` () = (numInListChecker [1; 2; 3] 4) |> should equal -1
 
     //tests for task 3
     [<Test>]
