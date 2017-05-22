@@ -2,32 +2,28 @@
 
     module Task1 =
         let bracketCheck (st:string) =
-            let brPush (l:list<char>) (ch:char) =
-                let brChecker (ch:char) =
-                    match ch with
-                    | '(' | '{' | '[' | ']' | '}' | ')' -> true
-                    | _ -> false
-                match l with
-                | [] -> if brChecker ch then (ch :: l) else l
-                | _ -> match ch with
-                       | ')' -> match l.Head with 
-                                | '(' -> l.Tail
-                                | _ -> (')' :: l)
-                       | '}' -> match l.Head with
-                                | '{' -> l.Tail
-                                | _ -> ('}' :: l)
-                       | ']' -> match l.Head with
-                                | '[' -> l.Tail
-                                | _ -> (']' :: l)
-                       | _ -> if brChecker ch then (ch :: l) else l
-            let rec loop l (str:string) i =
-                match i with 
-                | x when x = (str.Length) -> (List.length l = 0)
-                | _ -> loop (brPush l st.[i]) str (i + 1)
-            loop [] st 0
+            let getSymmetry ch =
+                match ch with
+                | ')' -> '('
+                | '}' -> '{'
+                | ']' -> '['
+            let rec brChecker (l:list<char>) (str:string) (i:int) =
+                match i with
+                | x when x = str.Length -> true
+                | _ -> match str.[i] with
+                       | ')' | '}' | ']' -> match l with
+                                            | [] -> false
+                                            | _ -> match l.Head with
+                                                   | x when x = getSymmetry str.[i] -> brChecker l.Tail str (i + 1)
+                                                   | _ -> false
+                       | '(' | '{' | '[' -> brChecker (str.[i] :: l) str (i + 1)
+                       | _ -> brChecker l str (i + 1)
+            brChecker [] st 0
     
     module Task2 =
         let func x l = List.map (fun y -> y * x) l
+        let func1 x = List.map (fun y -> y * x)
+        let func2 x = List.map <| (*) x
         let pointFreeFunc = (*) >> List.map
 
     module Tests =
@@ -46,9 +42,9 @@
 
         //test for task 2
         [<Test>]
-        let ``functionsTest`` () = ((func 2 [1; 2; 3])) |> should equal [2;4;6]
+        let ``functionsTest`` () = ((func 2 [1; 2; 3])) |> should equal [2; 4; 6]
 
         [<Test>]
-        let ``functionsTest1`` () = ((pointFreeFunc 2 [1; 2; 3])) |> should equal [2;4;6]
+        let ``functionsTest1`` () = ((pointFreeFunc 2 [1; 2; 3])) |> should equal [2; 4; 6]
 
 
