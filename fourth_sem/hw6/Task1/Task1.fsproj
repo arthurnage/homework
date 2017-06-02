@@ -46,6 +46,5 @@
     <Compile Include="Program.fs" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(FSharpTargetsPath)" />
 </Project>
