@@ -6,30 +6,27 @@ let getURLInfo(url : string) =
     let fetchAsync(url : string) =
         async {
             let request = WebRequest.Create(url)
-            let! response = request.AsyncGetResponse()
-            let stream = response.GetResponseStream()
-            let reader = new StreamReader(stream)
-            let html = reader.ReadToEndAsync()
-            let! htmlTask = Async.AwaitTask(html)
-            do printfn "%s --- %d" url htmlTask.Length
+            use! response = request.AsyncGetResponse()
+            use stream = response.GetResponseStream()
+            use reader = new StreamReader(stream)
+            let str = reader.ReadToEnd()
+            printfn "%s --- %d" url str.Length
+            return str
         }
 
-    let readHtml(url: string) =
-        let request = WebRequest.Create(url)
-        let response = request.GetResponse()
-        let stream = response.GetResponseStream()
-        let reader = new StreamReader(stream)
-        let html = reader.ReadToEnd()
-        html
+    let readHtml(url:string) =
+        async {
+            let! html = fetchAsync url
+            return html
+            }
 
-    let regexExpression = new System.Text.RegularExpressions.Regex("<a.*href=\"http.*\">")
-    let webPages = regexExpression.Matches(readHtml(url))
+    let regexExpression = new Regex("<a.*href=\"http.*\">")
+    let html = Async.RunSynchronously <| readHtml url
+    let webPages = regexExpression.Matches(html)
     let proc = [for url in webPages -> 
                      let value = url.Value
-                     //printfn "%A" value
                      fetchAsync(value.Substring(value.IndexOf("f=") + 3 , value.IndexOf("\">") - value.IndexOf("=\"") - 2))
-                     //fetchAsync(value)
                      ]    
     Async.Parallel proc |> Async.RunSynchronously |> ignore
 
-getURLInfo("http://hwproj.me/courses/20")
+getURLInfo "http://hwproj.me/courses/20"
